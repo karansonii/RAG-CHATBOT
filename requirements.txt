@@ -1,0 +1,63 @@
+# ==================================================
+# AI Chatbot Assistant - requirements.txt
+# ==================================================
+# Last updated: February 2025
+# Python version: 3.10+ recommended
+# ==================================================
+
+# === Core / Web Framework ===
+streamlit>=1.25.0                  # Main UI framework
+python-dotenv>=1.0.0               # Load .env variables (API keys, paths)
+
+# === Embeddings / Vector Search / RAG ===
+sentence-transformers==2.2.2       # Text embeddings (all-mpnet-base-v2)
+torch==2.0.1                       # PyTorch backend for sentence-transformers
+faiss-cpu==1.7.4                   # Fast similarity search (FAISS index)
+numpy==1.24.4                      # Numerical arrays & math operations
+
+# === Hugging Face / Re-ranking ===
+huggingface-hub>=0.23.0            # Access models from HF Hub (needed for cross-encoder)
+transformers>=4.36.0               # Cross-encoder reranker (ms-marco-MiniLM-L-6-v2)
+
+# === Document Loading & Parsing ===
+python-docx>=1.1.0                 # .docx reader
+python-pptx>=0.6.23                # .pptx reader (PowerPoint)
+PyPDF2>=3.0.1                      # PDF text extraction
+Pillow>=10.0.0                     # Image handling (used in OCR & PPT images)
+
+# === OCR (PaddleOCR for PPT images) ===
+paddlepaddle==2.6.1                # Deep learning backend for PaddleOCR
+paddleocr==2.7.0.3                 # OCR engine for text-in-image extraction
+protobuf<=3.20.2                   # Compatibility fix for PaddleOCR
+opencv-python-headless==4.9.0.80   # Headless OpenCV (server-friendly, no GUI)
+
+# === Google Gemini (LLM generation) ===
+google-generativeai>=0.8.5         # Official Gemini API client
+
+# === Language Detection & Translation ===
+deep-translator>=1.11.4            # Google Translate wrapper
+langdetect>=1.0.9                  # Language detection
+
+# === Voice Input / Output ===
+speechrecognition>=3.10.0          # Speech-to-Text (Google backend)
+pyaudio>=0.2.14                    # Microphone access
+gtts>=2.5.1                        # Google Text-to-Speech
+pygame>=2.5.2                      # Audio playback
+librosa>=0.10.1                    # Audio analysis (optional waveform)
+rapidfuzz>=3.6.0                   # Fuzzy string matching (transcription correction)
+
+# === Optional / Streamlit extras ===
+streamlit-webrtc>=0.47.7           # Real-time audio streaming (alternative mic option)
+av>=10.0.0                         # Audio/video handling for webrtc
+
+# ==================================================
+# Installation command (recommended)
+# ==================================================
+# pip install -r requirements.txt
+#
+# If you face version conflicts:
+#   pip install --upgrade pip setuptools wheel
+#   pip install -r requirements.txt --no-deps   (then install missing packages manually)
+#
+# For GPU acceleration (if available):
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
